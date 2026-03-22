@@ -76,8 +76,6 @@ Account | Posting Date | Transaction Date | Payee | Category | Memo | Outflow | 
 python3 -m pip install pandas gspread oauth2client fuzzywuzzy python-Levenshtein
 ```
 
-Here’s an **updated and cleaned-up setup section** for CashFlower that integrates both OAuth and your instructions, keeping it clear and consistent:
-
 ---
 
 ### **2. Setup Google Sheets**
