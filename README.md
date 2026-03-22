@@ -6,11 +6,11 @@
 
 Instead of manually reviewing statements, matching purchases, and categorizing expenses, CashFlower:
 
-* Imports your bank and shopping CSV files
-* Standardizes all transactions into a single format
-* Automatically categorizes common expenses
-* Removes duplicates
-* Syncs everything to Google Sheets
+- Imports your bank and shopping CSV files
+- Standardizes all transactions into a single format
+- Automatically categorizes common expenses
+- Removes duplicates
+- Syncs everything to Google Sheets
 
 👉 Goal: **Turn a stressful, manual process into a fully automated workflow.**
 
@@ -18,12 +18,12 @@ Instead of manually reviewing statements, matching purchases, and categorizing e
 
 ## Core Features
 
-* ✅ Unified transaction log across all accounts
-* ✅ Automatic inflow/outflow separation
-* ✅ Basic auto-categorization (customizable)
-* ✅ Deduplication of transactions
-* ✅ Google Sheets integration (single source of truth)
-* ✅ Supports multiple CSV sources
+- ✅ Unified transaction log across all accounts
+- ✅ Automatic inflow/outflow separation
+- ✅ Basic auto-categorization (customizable)
+- ✅ Deduplication of transactions
+- ✅ Google Sheets integration (single source of truth)
+- ✅ Supports multiple CSV sources
 
 ---
 
@@ -61,10 +61,10 @@ Account | Posting Date | Transaction Date | Payee | Category | Memo | Outflow | 
 
 ### Notes
 
-* **Outflow** = money spent (positive number)
-* **Inflow** = money received (positive number)
-* **Transaction Date** = when purchase happened
-* **Posting Date** = when bank recorded it
+- **Outflow** = money spent (positive number)
+- **Inflow** = money received (positive number)
+- **Transaction Date** = when purchase happened
+- **Posting Date** = when bank recorded it
 
 ---
 
@@ -76,18 +76,45 @@ Account | Posting Date | Transaction Date | Payee | Category | Memo | Outflow | 
 python3 -m pip install pandas gspread oauth2client fuzzywuzzy python-Levenshtein
 ```
 
-### 2. Setup Google Sheets
+Here’s an **updated and cleaned-up setup section** for CashFlower that integrates both OAuth and your instructions, keeping it clear and consistent:
 
-1. Create a Google Sheet named: `MasterTransactions`
-2. Enable Google Sheets API
-3. Create a service account and download `credentials.json`
-4. Place it inside:
+---
 
-```
-config/credentials.json
-```
+### **2. Setup Google Sheets**
 
-5. Share your Google Sheet with the service account email
+1. **Create a Google Sheet**
+   - Name it: `MasterTransactions`
+
+2. **Enable Google Sheets API**
+   - Go to [Google Cloud Console → APIs & Services → Library](https://console.cloud.google.com/apis/library)
+   - Enable **Google Sheets API** and **Google Drive API** for your project
+
+3. **Set up OAuth credentials**
+   - Go to [APIs & Services → Credentials → Create Credentials → OAuth Client ID](https://console.cloud.google.com/apis/credentials)
+   - Choose **Application Type: Desktop App**
+   - Download the JSON file
+
+4. **Use example credentials file**
+   - Copy the provided example:
+
+   ```bash
+   cp config/client_secret.example.json config/client_secret.json
+   ```
+
+   - Open `config/client_secret.json` and replace:
+     - `YOUR_CLIENT_ID` → your OAuth client ID
+     - `YOUR_CLIENT_SECRET` → your OAuth client secret
+
+5. **Save the file**
+   - Place it inside:
+
+   ```
+   config/client_secret.json
+   ```
+
+6. **Run CashFlower**
+   - The first time you run `python3 scripts/main.py`, OAuth will prompt you to log in and grant permissions
+   - Your token will be cached in `config/token.pickle` for future runs
 
 ---
 
@@ -123,13 +150,12 @@ python3 scripts/main.py
 
 ### Step 3: View results
 
-* Open your Google Sheet: `MasterTransactions`
-* All transactions will be:
-
-  * Combined
-  * Cleaned
-  * Categorized
-  * Deduplicated
+- Open your Google Sheet: `MasterTransactions`
+- All transactions will be:
+  - Combined
+  - Cleaned
+  - Categorized
+  - Deduplicated
 
 ---
 
@@ -159,18 +185,17 @@ category_rules = {
 
 ## Future Improvements
 
-* PDF statement parsing
-* Smarter transaction matching (fuzzy matching)
-* Scheduled automation (cron jobs)
-* Spending dashboards (charts)
-* Alerts for overspending
+- PDF statement parsing
+- Smarter transaction matching (fuzzy matching)
+- Scheduled automation (cron jobs)
+- Spending dashboards (charts)
+- Alerts for overspending
 
 ---
 
 ## Run Frequency
 
-* Recommended: **once per week**
-* Or automate it for a fully hands-off system
+- Recommended: **once per week**
+- Or automate it for a fully hands-off system
 
 ---
-
