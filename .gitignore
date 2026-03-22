@@ -1,0 +1,19 @@
+# Python compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+env/
+
+# OAuth and service account credentials
+config/client_secret.json
+config/token.pickle
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+*.tmp
